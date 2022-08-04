@@ -99,11 +99,16 @@ void DigitalClock::mousePressEvent(QMouseEvent *e)
     m_bPressed = true; //标记鼠标为按下状态
     if(Qt::RightButton == e->button() )
     {
-      if(QMessageBox::Yes == QMessageBox::question(NULL,  "退出",  "请问你是否要退出程序？",
-                             QMessageBox::Yes | QMessageBox::No, QMessageBox::Yes))
+        int ret = QMessageBox::question(this,  "退出",  "请问你是否要退出程序？",
+                                     QMessageBox::Yes | QMessageBox::No, QMessageBox::Yes);
+      if(ret == QMessageBox::Yes)
        {
-            this->close();
+//          this->close();
+          QApplication::exit(0);
        }
+      else {
+
+      }
     }
 
 }
